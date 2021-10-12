@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -29,6 +30,17 @@ class ConversionController extends AbstractController
             $response->setStatusCode(Response::HTTP_BAD_REQUEST);
         }
         $response->headers->set('Content-Type', 'text/html');
+        return $response;
+    }
+
+    /**
+     * @Route("/test", name="test")
+     * @return JsonResponse
+     */
+    public function test() : JsonResponse
+    {
+        $response = new JsonResponse();
+        $response->setContent("hello");
         return $response;
     }
 
